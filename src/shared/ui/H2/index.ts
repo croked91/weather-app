@@ -21,7 +21,7 @@ export const H2 = memo(styled.h2<{
     top: ${props => props.top};
     right: ${props => props.right};
     left: ${props => props.left || "35px"};
-    bottom: ${props => props.bottom};
+    bottom: ${props => props.bottom || "0px"};
     transform: ${props => props.transform || "translateX(150px)"} ;
     animation: ${props => props.animation} 500ms ease-out 500ms forwards;   
 `)
