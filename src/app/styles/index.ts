@@ -1,5 +1,5 @@
-import {createGlobalStyle} from 'styled-components'
-import {normalize} from 'styled-normalize'
+import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
 
 export const GlobalStyle = createGlobalStyle`
 ${normalize}
@@ -73,4 +73,4 @@ transition-duration: 0.01ms !important;
 scroll-behavior: auto !important;
 }
 }
-`
+`;

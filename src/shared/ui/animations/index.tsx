@@ -1,4 +1,4 @@
-import { keyframes } from "styled-components"
+import { keyframes } from 'styled-components';
 
 export const appearFromEmpty = keyframes`
 0% {
@@ -13,13 +13,13 @@ export const appearFromEmpty = keyframes`
 100% {
 transform:scale(1)
 }
-`
+`;
 
 export const floating = keyframes`
 50% { 
     transform: translateY(-8px); 
 }
-`
+`;
 
 export const rightSideAppear = keyframes`
 from {
@@ -30,7 +30,7 @@ to {
     opacity: 1;
     transform: translateX(0px);
 }
-`
+`;
 
 export const hideItem = keyframes`
 0% {
@@ -49,7 +49,7 @@ export const hideItem = keyframes`
     transform:scale(0.4);
     opacity: 0
 }
-`
+`;
 
 export const rotate360 = keyframes`
 from {

@@ -1,6 +1,3 @@
 export const AddressSuggestionsConfig = {
-    filterLocations: [{ "country": "*" }]
-}
-
-
-
+	filterLocations: [{ country: '*' }],
+};

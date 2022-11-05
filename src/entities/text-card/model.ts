@@ -1,3 +1,3 @@
 export type TextCardT = {
-    children: React.ReactNode
-}
+	children: React.ReactNode;
+};
