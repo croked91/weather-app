@@ -4,12 +4,12 @@ import styled from "styled-components";
 
 
 export const H3 = memo(styled.h3<{
-  animation: string
-  top: string
-  left: string
-  right: string
-  bottom: string
-  opacity: number
+  animation?: string
+  top?: string
+  left?: string
+  right?: string
+  bottom?: string
+  opacity?: number
 }>`
     position: absolute;
     font-weight:300;

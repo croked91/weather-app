@@ -2,8 +2,8 @@ import { memo } from "react";
 import styled, { css } from 'styled-components';
 
 export const Wrapper = memo(styled.div<{ 
-    hider: boolean 
-    animation: string
+    hider?: boolean
+    animation?: string
 }>`
     margin-top: 20px;
     display: flex;

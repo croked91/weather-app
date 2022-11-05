@@ -18,6 +18,5 @@ export const getCurrentWeather = (params?: GetCurrentWeatherParams): AxiosPromis
 
 export const reloadWeatherFromArray = async (params?: Weather[]) => {
     const promises = params && params.map((el) => getCurrentWeather(el.coord))
-    const res = promises && await Promise.all(promises)
-    return res
+    return promises && await Promise.all(promises)
 };

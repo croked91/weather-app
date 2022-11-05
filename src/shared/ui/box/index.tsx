@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 
 export const Box = memo(styled.div<{
-    animation: string
-    width: string
-    height: string
+    animation?: string
+    width?: string
+    height?: string
   }>`
 margin:  20px 5px;
 border-radius: 20px;

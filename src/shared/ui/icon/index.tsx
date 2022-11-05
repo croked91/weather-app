@@ -4,12 +4,12 @@ import styled from "styled-components";
 
 
 export const Icon = memo(styled.img<{
-    animation: string
-    top: string
-    left: string
-    right: string
-    bottom: string
-    opacity: number
+    animation?: string
+    top?: string
+    left?: string
+    right?: string
+    bottom?: string
+    opacity?: number
 }>`
     position: absolute;
     width: 120px;

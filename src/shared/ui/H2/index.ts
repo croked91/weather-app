@@ -4,14 +4,14 @@ import styled from "styled-components";
 
 
 export const H2 = memo(styled.h2<{
-  animation: string
-  top: string
-  left: string
-  right: string
-  bottom: string
-  opacity: number
-  transform: string
-  position: string
+  animation?: string
+  top?: string
+  left?: string
+  right?: string
+  bottom?: string
+  opacity?: number
+  transform?: string
+  position?: string
 }>`
     position: ${props => props.position || "absolute"};
     font-weight:300;
