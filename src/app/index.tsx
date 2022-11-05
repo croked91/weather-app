@@ -1,11 +1,15 @@
-import { Weather } from 'pages/weather';
+import {Weather} from 'pages/weather';
 import 'react-dadata/dist/react-dadata.css';
+import {GlobalStyle} from "./styles";
 
 
 export const App = () => {
-  return (
-    <Weather />
-  );
+    return (
+        <>
+            <GlobalStyle />
+            <Weather/>
+        </>
+    );
 }
 
 

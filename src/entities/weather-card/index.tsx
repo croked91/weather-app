@@ -6,7 +6,7 @@ import { Icon } from 'shared/ui/icon';
 import { H2 } from 'shared/ui/H2';
 import { H3 } from 'shared/ui/H3';
 import { WeatherCardT } from './model';
-import { appear, hideCard, titleAppear, weatherIconMove } from 'shared/ui/animations';
+import { appearFromEmpty, hideItem, rightSideAppear, floating } from 'shared/ui/animations';
 
 
 export const WeatherCard: FC<WeatherCardT> = memo(({ city, temperature, callback, icon }) => {
@@ -21,25 +21,25 @@ export const WeatherCard: FC<WeatherCardT> = memo(({ city, temperature, callback
     return (
         <Wrapper
             hider={isClose}
-            animation={hideCard}
+            animation={hideItem}
         >
-            <Box animation={appear}>
+            <Box animation={appearFromEmpty}>
                 <Closer
-                    animation={titleAppear}
+                    animation={rightSideAppear}
                     onClick={onClickHandler}
                     src={"https://cdn-icons-png.flaticon.com/512/130/130887.png"}
                 />
                 <Icon
-                    animation={weatherIconMove}
+                    animation={floating}
                     src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
                 />
                 <H2
-                    animation={titleAppear}
+                    animation={rightSideAppear}
                 >
                     {temperature}°
                 </H2>
                 <H3
-                    animation={titleAppear}
+                    animation={rightSideAppear}
                     bottom="0px"
                 >
                     {city}

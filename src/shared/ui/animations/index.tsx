@@ -1,6 +1,6 @@
 import { keyframes } from "styled-components"
 
-export const appear = keyframes`
+export const appearFromEmpty = keyframes`
 0% {
     transform:scale(0);
 }
@@ -15,13 +15,13 @@ transform:scale(1)
 }
 `
 
-export const weatherIconMove = keyframes`
+export const floating = keyframes`
 50% { 
     transform: translateY(-8px); 
 }
 `
 
-export const titleAppear = keyframes`
+export const rightSideAppear = keyframes`
 from {
     opacity: 0;
     transform: translateX(150px);
@@ -32,7 +32,7 @@ to {
 }
 `
 
-export const hideCard = keyframes`
+export const hideItem = keyframes`
 0% {
     transform:scale(1);
     opacity: 1
@@ -50,3 +50,12 @@ export const hideCard = keyframes`
     opacity: 0
 }
 `
+
+export const rotate360 = keyframes`
+from {
+transform: rotate(0deg);
+}
+to {
+transform: rotate(360deg);
+}
+`;

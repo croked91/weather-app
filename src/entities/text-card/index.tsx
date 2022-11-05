@@ -3,7 +3,7 @@ import { Box } from 'shared/ui/box';
 import { H2 } from 'shared/ui/H2';
 import { TextCardT } from './model';
 import { Flex } from 'shared/ui/flex';
-import { appear, titleAppear } from 'shared/ui/animations';
+import { appearFromEmpty, rightSideAppear } from 'shared/ui/animations';
 
 
 
@@ -12,7 +12,7 @@ export const TextCard: FC<TextCardT> = memo(({ children }) => {
 
     return (
         <Box
-            animation={appear}
+            animation={appearFromEmpty}
             width="70vw"
         >
             <Flex
@@ -21,7 +21,7 @@ export const TextCard: FC<TextCardT> = memo(({ children }) => {
                 justify='center'   
             >
                 <H2
-                    animation={titleAppear}
+                    animation={rightSideAppear}
                     position='block'
                 >
                     {children}

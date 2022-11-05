@@ -1,13 +1,5 @@
-import styled, { keyframes } from "styled-components";
-
-const rotate360 = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`;
+import styled from "styled-components";
+import {rotate360} from "../animations";
 
 export const Spinner = styled.div`
   animation: ${rotate360} 1s linear infinite;
