@@ -1,8 +1,8 @@
 import { Coordinates, CorrectName, DEFAULT_CITY } from './config';
 import { DaDataSuggestion, DaDataAddress } from 'react-dadata';
-import { reloadWeatherFromArray } from './../../shared/api/typicode/weather';
-import { Weather } from 'shared/api/typicode/models';
-import { getCurrentWeather } from '../../shared/api/typicode/weather';
+import { reloadWeatherFromArray } from './../../shared/api/weather';
+import { Weather } from 'shared/api/types';
+import { getCurrentWeather } from '../../shared/api/weather';
 import { createEffect, sample } from 'effector';
 import { createEvent } from 'effector';
 import { createStore } from 'effector';

@@ -1,10 +1,10 @@
 import axios from "axios";
-import { WEATHER_API_URL, DADATA_API_TOKEN, WEATHER_API_TOKEN } from "shared/config";
+import { WEATHER_API_TOKEN } from "shared/config";
 
 
 
 export const apiInstance = axios.create({
-    baseURL: WEATHER_API_URL,
+    baseURL: "https://api.openweathermap.org/data/2.5/",
     params: {
         appid: WEATHER_API_TOKEN, 
         units: "metric",

@@ -1,4 +1,4 @@
-import { Weather } from './models';
+import { Weather } from './types';
 import type { AxiosPromise } from "axios";
 import { apiInstance } from "./base";
 
