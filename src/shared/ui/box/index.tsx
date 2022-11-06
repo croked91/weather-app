@@ -1,4 +1,5 @@
 import styled, { Keyframes } from 'styled-components';
+import React from 'react';
 
 export const Box = styled.div<{
 	animation?: Keyframes;

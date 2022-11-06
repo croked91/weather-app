@@ -1,6 +1,7 @@
 import { useGate, useStore } from 'effector-react';
 import { TextCard } from 'entities/text-card';
 import { WeatherCard } from 'entities/weather-card';
+import React from 'react';
 import {
 	$currentCity,
 	getCurrentCity,
@@ -45,7 +46,11 @@ export const Weather = () => {
 				{isLoading && <Spinner />}
 				{isReload && <Spinner />}
 				<Flex direction="row" justify="center" wrap="wrap">
-					{mapWeather.length ? mapWeather : <TextCard>Добавьте город</TextCard>}
+					{mapWeather.length > 0 ? (
+						mapWeather
+					) : (
+						<TextCard>Добавьте город</TextCard>
+					)}
 				</Flex>
 			</Flex>
 		</>

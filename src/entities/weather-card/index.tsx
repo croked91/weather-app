@@ -19,7 +19,7 @@ export const WeatherCard: FC<WeatherCardT> = memo(
 
 		const onClickHandler = () => {
 			setIsClose(true);
-			callback && setTimeout(callback, 700);
+			callback != null && setTimeout(callback, 700);
 		};
 
 		return (

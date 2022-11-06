@@ -1,3 +1,3 @@
-export type TextCardT = {
+export interface TextCardT {
 	children: React.ReactNode;
-};
+}

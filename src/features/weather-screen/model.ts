@@ -3,9 +3,7 @@ import { DaDataSuggestion, DaDataAddress } from 'react-dadata';
 import { reloadWeatherFromArray } from 'shared/api/weather';
 import { Weather } from 'shared/api/types';
 import { getCurrentWeather } from '../../shared/api/weather';
-import { createEffect, sample } from 'effector';
-import { createEvent } from 'effector';
-import { createStore } from 'effector';
+import { createEffect, sample, createEvent, createStore } from 'effector';
 import { interval } from 'patronum';
 import { createGate } from 'effector-react';
 import connectLocalStorage from 'effector-localstorage/sync';
@@ -31,29 +29,27 @@ export const getCityWeatherFX = createEffect(
 
 export const reloadCityWeatherFX = createEffect(async (payload: Weather[]) => {
 	const req = await reloadWeatherFromArray(payload);
-	return req?.map((el) => el.data);
+	return req && req?.map((el) => el.data);
 });
 
 export const $citiesWeather = createStore<Weather[]>(
 	citiesWeatherLocalStorage.init([])
 )
 	.on(getCityWeatherFX.doneData, (state, res) => {
-		if (state.find((item) => item.name === res.name)) {
+		if (state.find((item) => item.name === res.name) != null) {
 			return state;
 		}
 		return [...state, res];
 	})
-	.on(
-		reloadCityWeatherFX.doneData,
-		(state, res) =>
-			res &&
+	.on(reloadCityWeatherFX.doneData, (state, res) => {
+		res &&
 			res.map((el) => {
 				return {
 					...el,
 					name: state.filter((city) => city.id === el.id)[0].name,
 				};
-			})
-	)
+			});
+	})
 	.on(deleteItem, (state, elId) => state.filter((el) => el.id !== elId))
 	.on(setCitiesWeather, (_, value) => value);
 

@@ -1,4 +1,4 @@
-export type Weather = {
+export interface Weather {
 	coord: {
 		lon: number;
 		lat: number;
@@ -46,4 +46,4 @@ export type Weather = {
 	id: number;
 	name: string | null;
 	cod: number;
-};
+}

@@ -1,7 +1,7 @@
-export type Coordinates = {
+export interface Coordinates {
 	lat: string | null;
 	lon: string | null;
-};
+}
 
 export type CorrectName = string | null;
 

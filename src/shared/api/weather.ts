@@ -4,18 +4,18 @@ import { apiInstance } from './base';
 
 const BASE_URL = 'weather';
 
-export type GetCurrentWeatherParams = {
+export interface GetCurrentWeatherParams {
 	lat: string | null | number;
 	lon: string | null | number;
-};
+}
 
 export const getCurrentWeather = (
 	params?: GetCurrentWeatherParams
-): AxiosPromise<Weather> => {
-	return apiInstance.get(BASE_URL, { params });
-};
+): AxiosPromise<Weather> => apiInstance.get(BASE_URL, { params });
 
 export const reloadWeatherFromArray = async (params?: Weather[]) => {
-	const promises = params && params.map((el) => getCurrentWeather(el.coord));
+	const promises: false | AxiosPromise<Weather>[] =
+		params != null &&
+		params.map(async (el) => await getCurrentWeather(el.coord));
 	return promises && (await Promise.all(promises));
 };

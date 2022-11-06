@@ -1,9 +1,5 @@
 import React, { FC } from 'react';
-import {
-	AddressSuggestions,
-	DaDataSuggestion,
-	DaDataAddress,
-} from 'react-dadata';
+import { AddressSuggestions } from 'react-dadata';
 import { DADATA_API_TOKEN } from 'shared/config';
 import { InputContainer } from 'shared/ui/inputContainer';
 import { AddressSuggestionsConfig } from './config';
@@ -21,7 +17,7 @@ export const WrappedAdressSuggestions: FC<WrappedAdressSuggestionsT> = ({
 				filterLocations={AddressSuggestionsConfig.filterLocations}
 				token={DADATA_API_TOKEN}
 				value={value}
-				onChange={(e) => e && callback(e)}
+				onChange={(e) => e != null && callback(e)}
 			/>
 		</InputContainer>
 	);

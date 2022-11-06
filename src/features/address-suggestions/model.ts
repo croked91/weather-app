@@ -1,11 +1,10 @@
-import { createEvent } from 'effector';
-import { createStore } from 'effector';
+import { createEvent, createStore } from 'effector';
 import { DaDataAddress, DaDataSuggestion } from 'react-dadata';
 
-export type WrappedAdressSuggestionsT = {
+export interface WrappedAdressSuggestionsT {
 	callback: (e: DaDataSuggestion<DaDataAddress>) => void;
 	value: DaDataSuggestion<DaDataAddress>;
-};
+}
 
 export const getCurrentCity = createEvent<DaDataSuggestion<DaDataAddress>>();
 
