@@ -17,6 +17,7 @@ import {
 import { Flex } from 'shared/ui/flex';
 import { Spinner } from 'shared/ui/loader';
 
+
 export const Weather = () => {
 	const currentCity = useStore($currentCity);
 	const citiesWeather = useStore($citiesWeather);

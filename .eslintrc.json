@@ -6,7 +6,8 @@
 	"extends": [
 		"eslint:recommended",
 		"plugin:@typescript-eslint/recommended",
-		"react-app"
+		"react-app",
+		"plugin:styled-components-a11y/recommended"
 	],
 	"overrides": [],
 	"parserOptions": {
@@ -14,6 +15,6 @@
 		"sourceType": "module",
 		"project": "./tsconfig.json"
 	},
-	"plugins": ["react"],
+	"plugins": ["react","styled-components-a11y"],
 	"rules": {}
 }

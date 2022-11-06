@@ -3,8 +3,6 @@ import { Wrapper } from 'shared/ui/wrapper';
 import { Box } from 'shared/ui/box';
 import { Closer } from 'shared/ui/closer';
 import { Icon } from 'shared/ui/icon';
-import { H2 } from 'shared/ui/H2';
-import { H3 } from 'shared/ui/H3';
 import { WeatherCardT } from './model';
 import {
 	appearFromEmpty,
@@ -12,6 +10,7 @@ import {
 	rightSideAppear,
 	floating,
 } from 'shared/ui/animations';
+import {Text} from "../../shared/ui/text";
 
 export const WeatherCard: FC<WeatherCardT> = memo(
 	({ city, temperature, callback, icon }) => {
@@ -34,10 +33,10 @@ export const WeatherCard: FC<WeatherCardT> = memo(
 						animation={floating}
 						src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
 					/>
-					<H2 animation={rightSideAppear}>{temperature}°</H2>
-					<H3 animation={rightSideAppear} bottom="0px">
+					<Text tag={"h2"} animation={rightSideAppear}>{temperature}°</Text>
+					<Text tag={"h3"} animation={rightSideAppear} bottom="0px">
 						{city}
-					</H3>
+                    </Text>
 				</Box>
 			</Wrapper>
 		);
