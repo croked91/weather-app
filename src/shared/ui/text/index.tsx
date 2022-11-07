@@ -15,6 +15,7 @@ interface IText {
     transform?: string;
     position?: string;
     color?: string
+    animationDescr?: string
 }
 
 const UnStyledText: FC<IText> = ({tag, children, className}) => {
@@ -47,7 +48,7 @@ export const Text = styled(UnStyledText)`
         left: ${(props) => props.left || '36px'};
         bottom: ${(props) => props.bottom || '0px'};
         transform: ${(props) => props.transform || 'translateX(150px)'};
-        animation: ${(props) => props.animation} 500ms ease-out 500ms forwards;
+        animation: ${(props) => props.animation} ${(props) => props.animationDescr};
     }
 
     &.h3{

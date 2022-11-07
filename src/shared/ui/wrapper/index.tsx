@@ -3,6 +3,7 @@ import styled, { css, Keyframes } from 'styled-components';
 export const Wrapper = styled.div<{
 	hider?: boolean;
 	animation?: Keyframes;
+    animationDescr?: string;
 }>`
 	margin-top: 20px;
 	display: flex;
@@ -12,6 +13,6 @@ export const Wrapper = styled.div<{
 	animation: ${(props) =>
 		props.hider &&
 		css`
-			${props.animation} 0.7s linear
+        ${props.animation} ${props.animationDescr} 
 		`};
 `;
