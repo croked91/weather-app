@@ -58,7 +58,7 @@ $citiesWeather.watch(citiesWeatherLocalStorage);
 export const Gate = createGate<DaDataSuggestion<DaDataAddress>>();
 
 const { tick } = interval({
-	timeout: 10000,
+	timeout: 60000,
 	start: startReloadTrigger,
 	stop: stopReloadTrigger,
 });

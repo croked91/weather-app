@@ -1,7 +1,7 @@
 import {useGate, useStore} from 'effector-react';
 import {TextCard} from 'entities/text-card';
 import {WeatherCard} from 'entities/weather-card';
-import React from 'react';
+import React, {memo} from 'react';
 import {
     $currentCity,
     getCurrentCity,
@@ -16,10 +16,9 @@ import {
 } from 'features/weather-screen/model';
 import {Flex} from 'shared/ui/flex';
 import {Spinner} from 'shared/ui/loader';
-import {DADATA_API_TOKEN} from "../../shared/config";
 
 
-export const Weather = () => {
+export const Weather = memo(() => {
     const currentCity = useStore($currentCity);
     const citiesWeather = useStore($citiesWeather);
     const isLoading = useStore(getCityWeatherFx.pending);
@@ -55,4 +54,4 @@ export const Weather = () => {
             </Flex>
         </>
     );
-};
+});
