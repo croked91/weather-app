@@ -17,7 +17,7 @@ const citiesWeatherLocalStorage = connectLocalStorage('citiesWeather')
 	.onError((err) => console.log(err))
 	.onChange(setCitiesWeather);
 
-export const getCityWeatherFX = createEffect(
+export const getCityWeatherFx = createEffect(
 	async (payload: {
 		coordinates: Coordinates;
 		correctName: CorrectName;
@@ -27,7 +27,7 @@ export const getCityWeatherFX = createEffect(
 	}
 );
 
-export const reloadCityWeatherFX = createEffect(async (payload: Weather[]) => {
+export const reloadCityWeatherFx = createEffect(async (payload: Weather[]) => {
 	const req = await reloadWeatherFromArray(payload);
 	return req && req?.map((el) => el.data);
 });
@@ -35,13 +35,13 @@ export const reloadCityWeatherFX = createEffect(async (payload: Weather[]) => {
 export const $citiesWeather = createStore<Weather[]>(
 	citiesWeatherLocalStorage.init([])
 )
-	.on(getCityWeatherFX.doneData, (state, res) => {
+	.on(getCityWeatherFx.doneData, (state, res) => {
 		if (state.find((item) => item.name === res.name) != null) {
 			return state;
 		}
 		return [...state, res];
 	})
-	.on(reloadCityWeatherFX.doneData, (state, res) => {
+	.on(reloadCityWeatherFx.doneData, (state, res) => {
 		res &&
 			res.map((el) => {
 				return {
@@ -58,7 +58,7 @@ $citiesWeather.watch(citiesWeatherLocalStorage);
 export const Gate = createGate<DaDataSuggestion<DaDataAddress>>();
 
 const { tick } = interval({
-	timeout: 60000,
+	timeout: 10000,
 	start: startReloadTrigger,
 	stop: stopReloadTrigger,
 });
@@ -66,7 +66,7 @@ const { tick } = interval({
 sample({
 	clock: tick,
 	source: $citiesWeather,
-	target: reloadCityWeatherFX,
+	target: reloadCityWeatherFx,
 });
 
 sample({
@@ -91,14 +91,14 @@ sample({
 			correctName: currentWeather.data.city,
 		};
 	},
-	target: getCityWeatherFX,
+	target: getCityWeatherFx,
 });
 
 sample({
 	clock: Gate.state,
 	filter: (state) =>
 		!JSON.parse(localStorage.getItem('citiesWeather') || '{}').length &&
-		state.data.geo_lat == '',
+		state.data.geo_lat == null,
 	fn: () => DEFAULT_CITY,
-	target: getCityWeatherFX,
+	target: getCityWeatherFx,
 });

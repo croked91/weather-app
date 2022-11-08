@@ -1,28 +1,36 @@
-import React, { FC, memo, useState } from 'react';
-import { Wrapper } from 'shared/ui/wrapper';
-import { Box } from 'shared/ui/box';
-import { WeatherCardT } from './model';
+import React, {FC, memo, useState} from 'react';
+import {HidingAnimationContainer} from 'shared/ui/wrapper';
+import {Box} from 'shared/ui/box';
+import {WeatherCardT} from './types';
 import {
-	appearFromEmpty,
-	hideItem,
-	rightSideAppear,
-	floating,
+    appearFromEmpty,
+    hideItem,
+    rightSideAppear,
+    floating,
 } from 'shared/ui/animations';
 import {Text} from "../../shared/ui/text";
 import {Img} from "../../shared/ui/img";
+import styled from "styled-components";
+
+const WeatherCardBox = styled(Box)`
+&.weather-card{
+margin: 20px 6px;
+}
+`
 
 export const WeatherCard: FC<WeatherCardT> = memo(
-	({ city, temperature, callback, icon }) => {
-		const [isClose, setIsClose] = useState(false);
+    ({city, temperature, callback, icon}) => {
+        const [isClose, setIsClose] = useState(false);
 
-		const onClickHandler = () => {
-			setIsClose(true);
-			callback != null && setTimeout(callback, 700);
-		};
+        const onClickHandler = () => {
+            setIsClose(true);
+            callback && setTimeout(callback, 700);
+        };
 
-		return (
-                <Wrapper hider={isClose} animation={hideItem} animationDescr={"0.7s linear"}>
-                <Box animation={appearFromEmpty} animationDescr={"500ms ease-out forwards"}>
+        return (
+            <HidingAnimationContainer hider={isClose} animation={hideItem} animationDescr={"0.7s linear"}>
+                <WeatherCardBox className={"weather-card"} animation={appearFromEmpty}
+                                animationDescr={"500ms ease-out forwards"}>
                     <Img
                         opacity={0}
                         animation={rightSideAppear}
@@ -44,12 +52,14 @@ export const WeatherCard: FC<WeatherCardT> = memo(
                         bottom={"120px"}
                         alt={""}
                     />
-                    <Text tag={"h2"} animation={rightSideAppear} animationDescr={"500ms ease-out 500ms forwards"}>{temperature}°</Text>
-                    <Text tag={"h3"} animation={rightSideAppear} animationDescr={"500ms ease-out 500ms forwards"} bottom="0px">
-						{city}
+                    <Text tag={"h2"} animation={rightSideAppear}
+                          animationDescr={"500ms ease-out 500ms forwards"}>{temperature}°</Text>
+                    <Text tag={"h3"} animation={rightSideAppear} animationDescr={"500ms ease-out 500ms forwards"}
+                          bottom="0px">
+                        {city}
                     </Text>
-				</Box>
-			</Wrapper>
-		);
-	}
+                </WeatherCardBox>
+            </HidingAnimationContainer>
+        );
+    }
 );

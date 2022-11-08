@@ -1,11 +1,10 @@
 import styled, { css, Keyframes } from 'styled-components';
 
-export const Wrapper = styled.div<{
+export const HidingAnimationContainer = styled.div<{
 	hider?: boolean;
 	animation?: Keyframes;
     animationDescr?: string;
 }>`
-	margin-top: 20px;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
