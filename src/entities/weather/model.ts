@@ -100,7 +100,7 @@ sample({
     clock: Gate.state,
     filter: (state) =>
         !JSON.parse(getItemFromLS(CITIES_WEATHER)).length &&
-        state.data.geo_lat == null,
+        state.data.geo_lat === EMPTY_GEO_LAT,
     fn: () => DEFAULT_CITY,
     target: getCityWeatherFx,
 });
