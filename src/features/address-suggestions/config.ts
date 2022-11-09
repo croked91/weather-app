@@ -1,3 +1,3 @@
-export const AddressSuggestionsConfig = {
+export const addressSuggestionsConfig = {
 	filterLocations: [{ country: '*' }],
 };

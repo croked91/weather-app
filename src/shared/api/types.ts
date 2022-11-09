@@ -47,3 +47,8 @@ export interface Weather {
 	name: string | null;
 	cod: number;
 }
+
+export interface GetCurrentWeatherParams {
+    lat: string | null | number;
+    lon: string | null | number;
+}

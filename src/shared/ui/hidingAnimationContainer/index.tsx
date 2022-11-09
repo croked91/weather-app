@@ -3,7 +3,7 @@ import styled, { css, Keyframes } from 'styled-components';
 export const HidingAnimationContainer = styled.div<{
 	hider?: boolean;
 	animation?: Keyframes;
-    animationDescr?: string;
+	animationDescr?: string;
 }>`
 	display: flex;
 	flex-direction: row;
@@ -12,6 +12,6 @@ export const HidingAnimationContainer = styled.div<{
 	animation: ${(props) =>
 		props.hider &&
 		css`
-        ${props.animation} ${props.animationDescr} 
+			${props.animation} ${props.animationDescr}
 		`};
 `;

@@ -1,57 +1,63 @@
-import {useGate, useStore} from 'effector-react';
-import {TextCard} from 'entities/text-card';
-import {WeatherCard} from 'entities/weather-card';
-import React, {memo} from 'react';
+import React, {useMemo} from 'react';
+import {useGate, useUnit} from 'effector-react';
 import {
     $currentCity,
     getCurrentCity,
 } from 'features/address-suggestions/model';
 import {StyledAdressSuggestions} from 'features/address-suggestions/ui';
-import {
+import {WeatherCard} from 'entities/weather/ui';
+import {weatherModel} from 'entities/weather'
+import {TextCard} from "../../shared/ui/text-card";
+import {Flex} from 'shared/ui/flex';
+import {Spinner} from 'shared/ui/loader';
+
+
+
+const {
     $citiesWeather,
     deleteItem,
     Gate,
     getCityWeatherFx,
     reloadCityWeatherFx,
-} from 'features/weather-screen/model';
-import {Flex} from 'shared/ui/flex';
-import {Spinner} from 'shared/ui/loader';
+} = weatherModel
 
-
-export const Weather = memo(() => {
-    const currentCity = useStore($currentCity);
-    const citiesWeather = useStore($citiesWeather);
-    const isLoading = useStore(getCityWeatherFx.pending);
-    const isReload = useStore(reloadCityWeatherFx.pending);
+export const Weather = () => {
+    const currentCity = useUnit($currentCity);
+    const citiesWeather = useUnit($citiesWeather);
+    const isLoading = useUnit(getCityWeatherFx.pending);
+    const isReload = useUnit(reloadCityWeatherFx.pending);
     useGate(Gate, currentCity);
 
-    const mapWeather =
-        citiesWeather &&
-        citiesWeather.map((el) => (
-            <WeatherCard
-                callback={() => deleteItem(el.id)}
-                key={el.id}
-                city={el.name}
-                temperature={Math.ceil(el.main.temp).toString()}
-                icon={el.weather[0].icon}
-            />
-        ));
+
+    const mapWeather = useMemo(() => citiesWeather.map((el) => (
+        <WeatherCard
+            callback={() => deleteItem(el.id)}
+            key={el.id}
+            city={el.name}
+            temperature={Math.ceil(el.main.temp).toString()}
+            icon={el.weather[0].icon}
+        />
+    )), [citiesWeather]);
 
     return (
         <>
             <Flex direction="column" align="center" margin="20px 0 0 0">
-                <StyledAdressSuggestions callback={getCurrentCity} value={currentCity}
-                                         className={"containerClassName"}/>
+                <StyledAdressSuggestions
+                    callback={getCurrentCity}
+                    value={currentCity}
+                    className='containerClassName'
+                />
                 {isLoading && <Spinner/>}
                 {isReload && <Spinner/>}
                 <Flex direction="row" justify="center" wrap="wrap">
-                    {mapWeather.length > 0 ? (
+                    {mapWeather.length > 0
+                        ?
                         mapWeather
-                    ) : (
+                        :
                         <TextCard>Добавьте город</TextCard>
-                    )}
+                    }
                 </Flex>
             </Flex>
         </>
     );
-});
+};

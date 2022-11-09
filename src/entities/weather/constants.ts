@@ -1,9 +1,4 @@
-export interface Coordinates {
-	lat: string | null;
-	lon: string | null;
-}
-
-export type CorrectName = string | null;
+export const EMPTY_GEO_LAT = '';
 
 export const DEFAULT_CITY = {
 	coordinates: {
@@ -12,3 +7,5 @@ export const DEFAULT_CITY = {
 	},
 	correctName: 'Москва',
 };
+
+export const CITIES_WEATHER = 'citiesWeather'
