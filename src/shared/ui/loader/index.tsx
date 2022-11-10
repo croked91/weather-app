@@ -1,5 +1,15 @@
 import styled from 'styled-components';
-import { rotate360 } from '../animations';
+import {rotate360} from '../animations';
+import {breakpoints} from "shared/lib/breakpoints";
+
+const {
+    mobile,
+    tablet,
+    laptop,
+    desktop,
+    desktopL
+} = breakpoints.devices
+
 
 export const Spinner = styled.div`
 	animation: ${rotate360} 1s linear infinite;
@@ -14,19 +24,19 @@ export const Spinner = styled.div`
 	border-radius: 50%;
 	position: absolute;
 	top: 5px;
-	@media (max-width: 1440px) {
+    ${desktopL}{
 		right: calc(32.5%);
 	}
-	@media (max-width: 1280px) {
+    ${desktop}{
 		right: calc(31.5%);
 	}
-	@media (max-width: 720px) {
+    ${laptop}{
+		right: calc(32%);
+	}
+    ${tablet}{
 		right: calc(29%);
 	}
-	@media (max-width: 480px) {
-		right: calc(25%);
-	}
-	@media (max-width: 320px) {
-		right: calc(22%);
+    ${mobile}{
+		right: calc(1%);
 	}
 `;

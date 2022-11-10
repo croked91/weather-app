@@ -5,14 +5,30 @@ import { Flex } from 'shared/ui/flex';
 import { appearFromEmpty, rightSideAppear } from 'shared/ui/animations';
 import { Text } from 'shared/ui/text';
 import styled from 'styled-components';
+import {breakpoints} from "shared/lib/breakpoints";
+
+const {
+    mobile,
+    tablet,
+    laptop,
+} = breakpoints.devices
 
 const TextCardBox = styled(Box)`
 	&.text-card {
+        ${laptop}{
+            height: 280px
+        };
+        ${tablet}{
+            height: 200px
+        };
 		margin: 20px;
+        ${mobile}{
+            height: 100px
+        };
 	}
 `;
 
-export const TextCard: FC<ITextCard> = ({ children }) => {
+const UnStyledTextCard: FC<ITextCard> = ({ children, className }) => {
 	return (
 		<TextCardBox
 			className="text-card"
@@ -27,6 +43,7 @@ export const TextCard: FC<ITextCard> = ({ children }) => {
 					animation={rightSideAppear}
 					animationDescr={'1s ease-out 500ms forwards'}
 					position="block"
+                    className={className}
 				>
 					{children}
 				</Text>
@@ -34,3 +51,18 @@ export const TextCard: FC<ITextCard> = ({ children }) => {
 		</TextCardBox>
 	);
 };
+
+export const TextCard = styled(UnStyledTextCard)`
+    &.textCard-text{
+            ${laptop}{
+                font-size: 80px
+            };
+            ${tablet}{
+                font-size: 60px
+            };
+            ${mobile}{
+                font-size: 30px
+            };
+        }
+    }
+`

@@ -1,6 +1,8 @@
 import React, {FC, ReactNode} from 'react';
 import styled, {Keyframes} from 'styled-components';
 
+
+
 interface IText {
     tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
     children?: ReactNode;

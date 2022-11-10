@@ -4,6 +4,15 @@ import {AddressSuggestions} from 'react-dadata';
 import styled from 'styled-components';
 import { DADATA_API_TOKEN } from 'shared/config';
 import { addressSuggestionsConfig } from './config';
+import {breakpoints} from "shared/lib/breakpoints";
+
+const {
+    desktopL,
+    mobile,
+    tablet,
+    laptop,
+    desktop,
+} = breakpoints.devices
 
 
 
@@ -26,6 +35,21 @@ const WrappedAddressSuggestions: FC<IWrappedAddressSuggestions> = ({
 
 export const StyledAdressSuggestions = styled(WrappedAddressSuggestions)`
 	&.containerClassName {
-		width: 30vw;
+        ${desktopL}{
+            width: 100vw;
+        }
+        ${desktop}{
+            width: 100vw;
+        }
+        ${laptop}{
+            width: 40vw;
+        }
+        ${tablet}{
+            width: 36vw;
+        }
+        ${mobile}{
+            width: 80vw;
+        }
+
 	}
 `;
