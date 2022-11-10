@@ -54,7 +54,7 @@ export const Weather = () => {
                         ?
                         mapWeather
                         :
-                        <TextCard className='textCard-text'>CI/CD works sds</TextCard>
+                        <TextCard className='textCard-text'>Выберите город</TextCard>
                     }
                 </Flex>
             </Flex>
